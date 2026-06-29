@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette - Luxury Light Theme (High Glassmorphism) */
+  --bg-main: #FAFAFA;
+  --bg-card: rgba(255, 255, 255, 0.4);
+  --bg-glass: rgba(255, 255, 255, 0.45);
+  --text-primary: #1A1A24;
+  --text-secondary: #6B7280;
+  
+  --accent-glow: rgba(17, 17, 17, 0.15);
+  --accent-main: #000000;
+  --accent-hover: #333333;
+  
+  --border-glass: rgba(255, 255, 255, 0.6);
+  --liquid-highlight: rgba(255, 255, 255, 0.8);
+  --liquid-shadow: rgba(0, 0, 0, 0.05);
+
+  /* Typography */
+  --font-main: 'Outfit', sans-serif;
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #F0F2F5;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Liquid Glass Utilities */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  border-radius: 36px;
+  box-shadow: 
+    0 30px 60px var(--liquid-shadow), 
+    inset 0 0 0 1px var(--liquid-highlight), 
+    inset 0 20px 40px rgba(255,255,255,0.4);
+}
+
+.glass-nav {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 100%);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-bottom: 1px solid var(--border-glass);
+  box-shadow: 
+    0 10px 30px var(--liquid-shadow), 
+    inset 0 -1px 0 var(--liquid-highlight);
+}
+
+/* Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-glass);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
