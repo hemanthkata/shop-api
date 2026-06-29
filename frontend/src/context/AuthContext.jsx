@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -20,7 +22,7 @@ export function AuthProvider({ children }) {
 
   const fetchUserProfile = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/users/me/', {
+      const response = await fetch(`${API_URL}/api/users/me/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -38,7 +40,7 @@ export function AuthProvider({ children }) {
   };
 
   const login = async (username, password) => {
-    const res = await fetch('http://127.0.0.1:8000/api/users/login/', {
+    const res = await fetch(`${API_URL}/api/users/login/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
@@ -53,7 +55,7 @@ export function AuthProvider({ children }) {
 
   const register = async (userData) => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/users/register/', {
+      const res = await fetch(`${API_URL}/api/users/register/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

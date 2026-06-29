@@ -3,13 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function CategoryMenu({ isOpen, onClose }) {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen && categories.length === 0) {
-      fetch('http://127.0.0.1:8000/api/categories/')
+      fetch(`${API_URL}/api/categories/`)
         .then(res => res.json())
         .then(data => setCategories(data.results || data))
         .catch(err => console.error(err));

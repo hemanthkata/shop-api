@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { ArrowRight } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ function ProductsPage() {
     const searchQuery = searchParams.get('search');
     const categoryQuery = searchParams.get('category');
     
-    let url = 'http://127.0.0.1:8000/api/products/';
+    let url = `${API_URL}/api/products/`;
     const params = new URLSearchParams();
     
     if (searchQuery) params.append('search', searchQuery);

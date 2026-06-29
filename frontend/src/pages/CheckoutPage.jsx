@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { CreditCard, Truck, ShieldCheck } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function CheckoutPage() {
   const { cart, total, clearCart } = useCart();
   const { user, token } = useAuth();
@@ -39,7 +41,7 @@ function CheckoutPage() {
     };
     
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/orders/', {
+      const res = await fetch(`${API_URL}/api/orders/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

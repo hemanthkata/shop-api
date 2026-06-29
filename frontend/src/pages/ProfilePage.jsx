@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function ProfilePage() {
   const { user, token, logout } = useAuth();
   const [orders, setOrders] = useState([]);
@@ -15,7 +17,7 @@ function ProfilePage() {
     }
 
     // Fetch order history
-    fetch('http://127.0.0.1:8000/api/orders/', {
+    fetch(`${API_URL}/api/orders/`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.json())
